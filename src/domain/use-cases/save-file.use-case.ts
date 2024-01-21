@@ -6,8 +6,8 @@ export interface SaveFileUseCase {
 
 export interface Options{
     fileContent: string;
-    name: string;
-    destination: string;
+    name?: string;
+    destination?: string;
 }
 
 export class SaveFile implements SaveFileUseCase{
@@ -24,7 +24,7 @@ export class SaveFile implements SaveFileUseCase{
             fs.writeFileSync(`${destination}/${name}.txt`, fileContent);
             return true;
         } catch (error) {
-            console.error(error);
+            //console.error(error); //winston
             return false;
         }
 

@@ -9,8 +9,6 @@ interface RunOptions{
     destination: string;
 }
 
-
-
 export class ServerApp{
 
     static run({base, limit, showTable, name, destination}: RunOptions) {
@@ -18,14 +16,16 @@ export class ServerApp{
         
         
         const table = new CreateTable().execute({base, limit});
-        const wasCreated = new SaveFile().execute({fileContent: table, destination, name});
+        const wasCreated = new SaveFile().execute({fileContent: table, destination:destination, name:name});
 
         if (showTable)
             console.log(table);
 
+            
         ( wasCreated )
         ? console.log('File created')
         : console.error('File not created');
+        
         
     }
 }
